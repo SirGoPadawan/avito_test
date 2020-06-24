@@ -31,7 +31,11 @@ module.exports = {
       },
       {
         test: /\.otf$/,
-        use: ["file-loader"],
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
       },
       {
         test: /\.vue$/,

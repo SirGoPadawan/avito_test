@@ -1,18 +1,94 @@
 @import "./normalize.css";
+@import "./fonts.css";
 * {
   box-sizing: border-box;
 }
-.container {
+a {
+  text-decoration: none;
+}
+h4 {
+  color: #fff;
+  text-align: center;
+  font-size: 1.3em;
+}
+.container-about {
+  border: dashed;
+}
+.container,
+.container-about {
+  font-family: "Roboto";
   margin: 0 auto;
   max-width: 1366px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: coral;
+  background-color: #6a2202;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px dashed #bc7201;
+}
+.main,
+.about-repo {
+  margin-top: 20px;
+  display: flex;
+}
+.header__title {
+  color: #ffffff;
+}
+.main__items {
+  margin-bottom: 20px;
+  width: 100%;
 }
 .placeholder {
   display: flex;
 }
-.paginator {
+.btn-search,
+.placeholder__input {
+  outline: none;
+  color: #536872;
+  background-color: #ffffff;
+}
+.placeholder__input {
+  width: 100%;
+  padding: 15px 0 15px 15px;
+  font-size: 1.3em;
+  margin-right: 10px;
+  color: #000000;
+}
+.btn-search,
+.placeholder__input,
+.repo {
   border: 3px #cacaca;
   border-radius: 10px;
+}
+.btn-search {
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 0 15px;
+}
+.repo {
+  color: #ffffff;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: #bc7201;
+}
+.text,
+.about__name-repo,
+.search__name-user {
+  color: #ffffff;
+}
+.text {
+  font-size: 1.1em;
+}
+.about-repo {
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 0 20px;
+  margin-bottom: 20px;
+  background-color: #bc7201;
+}
+.about__name-repo {
+  text-align: center;
+  font-size: 1.5em;
 }

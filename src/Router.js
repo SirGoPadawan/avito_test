@@ -1,4 +1,5 @@
 import Vue from "vue";
+import Vuex from "vuex";
 import VueRouter from "vue-router";
 
 import TheIndex from "./components/pages/TheIndex.vue";
