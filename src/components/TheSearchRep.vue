@@ -5,9 +5,9 @@
         type="text"
         class="placeholder__input"
         placeholder="Name repository"
-        :value="name"
+        v-model="name"
       />
-      <button @click="getRepositoriesByName(name)" class="btn-search">
+      <button @click="getRepoByName()" class="btn-search">
         Search
       </button>
     </form>
@@ -21,31 +21,63 @@
       <p class="text">Last commit {{ repo.updated_at }}</p>
       <a class="text" :href="repo.html_url" target="_blank">GO TO REP</a>
     </article>
+    <article class="paginator">
+      <button class="paginator__btn" @click="prevPage()">Prev</button>
+      <router-link
+        :to="'/page/' + page"
+        class="paginator__page "
+        v-for="page in 5"
+        :key="page"
+      >
+        {{ page }}
+      </router-link>
+      <button class="paginator__btn" @click="nextPage()">Next</button>
+    </article>
   </section>
 </template>
 <script>
-import { mapGetters, mapActions, mapState } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
       name: "",
     };
   },
+  watch: {
+    $route: "goToPage",
+  },
   computed: {
-    ...mapGetters(["allRepositories"]),
+    ...mapGetters(["allRepositories", "getPageCount"]),
+    page: function() {
+      return this.$route.params.page;
+    },
   },
   methods: {
     ...mapActions(["getRepositories"]),
-    getRepositoriesByName(name) {
-      if (name == null) {
-        this.name = "user";
+    goToPage() {
+      this.getRepositories({ name: this.name, page: this.page });
+    },
+    getRepoByName() {
+      if (this.$route.path === "/") {
+        this.getRepositories({ name: this.name, page: this.page });
       } else {
-        this.name = name + "+in:name";
+        this.$router.push("/");
+      }
+    },
+    nextPage() {
+      if (Number(this.$route.params.page) + 1 <= this.getPageCount) {
+        this.$router.push("/page/" + (Number(this.$route.params.page) + 1));
+      }
+    },
+    prevPage() {
+      if (this.$route.params.page - 1 >= 1) {
+        this.$router.push("/page/" + (this.$route.params.page - 1));
       }
     },
   },
-  async mounted() {
-    this.getRepositories(this.getRepositoriesByName);
+  async created() {
+    console.log(this);
+    this.getRepositories({ name: this.name, page: this.$route.params.page });
   },
 };
 </script>

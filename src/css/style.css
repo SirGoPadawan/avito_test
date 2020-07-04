@@ -24,7 +24,7 @@ h4 {
   background-color: #6a2202;
 }
 .header {
-  display: flex;
+  splay: flex;
   justify-content: center;
   border-bottom: 2px dashed #bc7201;
 }
@@ -91,4 +91,35 @@ h4 {
 .about__name-repo {
   text-align: center;
   font-size: 1.5em;
+}
+.paginator {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: 10px;
+}
+.paginator__page {
+  color: #fff;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+.paginator__btn {
+  padding: 10px;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+  background: antiquewhite;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+.paginator a:hover {
+  color: burlywood;
+}
+.paginator a.router-link-exact-active {
+  color: burlywood;
+  border: 1px solid;
+  border-radius: 7px;
+  padding: 4px;
 }

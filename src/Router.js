@@ -14,6 +14,10 @@ const router = new VueRouter({
       component: TheIndex,
     },
     {
+      path: "/page/:page",
+      component: TheIndex,
+    },
+    {
       path: "/the-about-rep",
       component: TheAboutRep,
     },
